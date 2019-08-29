@@ -23,19 +23,13 @@ public class EctoolsAggregatorApplication {
     }
 
     @Bean
-    public JmsListenerContainerFactory<?> defaultFactory (
+    public JmsListenerContainerFactory<?> connectionFactory (
            ConnectionFactory connectionFactory, DefaultJmsListenerContainerFactoryConfigurer configurer){
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        return factory;
-    }
 
-    @Bean
-    public MessageConverter jsonMessageConverter() {
-        MappingJackson2MessageConverter converter = new MappingJackson2MessageConverter();
-        converter.setTargetType(MessageType.TEXT);
-        converter.setTypeIdPropertyName("_type");
-        return converter;
+        factory.setErrorHandler(t -> System.err.println("An error has occurred in the transaction"));
+        return factory;
     }
 
 }

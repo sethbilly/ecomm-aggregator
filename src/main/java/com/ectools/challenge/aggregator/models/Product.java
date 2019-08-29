@@ -1,22 +1,32 @@
 package com.ectools.challenge.aggregator.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
+@Table(name = "products")
 public class Product implements Serializable {
 
     @Id
+    @Column(name = "uuid")
     private String uuid;
+    @Column(name = "name")
     private String name;
+    @Column(name = "description")
     private String description;
+    @Column(name = "provider")
     private String provider;
+    @Column(name = "available")
     private boolean available;
+    @Column(name = "unit_of_measurement")
     private String unitOfMeasurement;
-    private Date createdAt;
-    private Date updatedAt;
+    @Column(name = "created_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date createdAt = new Date();
+    @Column(name = "updated_at")
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date updatedAt = null;
 
     public String getName() {
         return name;

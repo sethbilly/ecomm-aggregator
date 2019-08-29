@@ -13,7 +13,7 @@ public class ProductTransactionReceiver {
 
     @Autowired private ProductRepository productRepository;
 
-    @JmsListener(destination = "ProductTransactionQueue", containerFactory = "defaultFactory")
+    @JmsListener(destination = "ProductTransactionQueue", containerFactory = "connectionFactory")
     public void receiveMessage(List<Product> products) {
 
         /***
