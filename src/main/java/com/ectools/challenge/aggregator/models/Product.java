@@ -11,19 +11,26 @@ public class Product implements Serializable {
     @Id
     @Column(name = "uuid")
     private String uuid;
+
     @Column(name = "name")
     private String name;
+
     @Column(name = "description")
     private String description;
+
     @Column(name = "provider")
     private String provider;
+
     @Column(name = "available")
     private boolean available;
+
     @Column(name = "unit_of_measurement")
     private String unitOfMeasurement;
+
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt = new Date();
+
     @Column(name = "updated_at")
     @Temporal(TemporalType.TIMESTAMP)
     private Date updatedAt = null;
