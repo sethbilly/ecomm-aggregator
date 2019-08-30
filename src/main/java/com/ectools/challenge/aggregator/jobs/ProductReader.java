@@ -17,6 +17,7 @@ public class ProductReader implements ItemReader<Product> {
 
     @Value("#{jobParameter['products']}")
     List<Product> products;
+
     private int counter;
 
     public ProductReader() {
