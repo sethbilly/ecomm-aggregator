@@ -7,8 +7,8 @@ import java.util.Optional;
 
 public interface ProductService {
 
-    public void createProduct(Product product);
-    public void createAllProducts(List<Product> products);
+    public void save(Product product);
+    public void saveAll(List<Product> products);
     public List<Product> getProducts();
     public Optional<Product> findById(String uuid);
     public Product update(Product product, String uuid);
