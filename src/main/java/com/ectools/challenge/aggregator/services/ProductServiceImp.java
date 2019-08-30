@@ -16,12 +16,12 @@ public class ProductServiceImp implements ProductService {
     @Autowired private ProductRepository productRepository;
 
     @Override
-    public void createProduct(Product product) {
+    public void save(Product product) {
         productRepository.save(product);
     }
 
     @Override
-    public void createAllProducts(List<Product> products) {
+    public void saveAll(List<Product> products) {
         productRepository.saveAll((Iterable) products);
     }
 
