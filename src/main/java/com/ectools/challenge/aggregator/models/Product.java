@@ -1,39 +1,53 @@
 package com.ectools.challenge.aggregator.models;
 
-import javax.persistence.*;
-import java.io.Serializable;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.mongodb.core.mapping.Document;
 import java.util.Date;
 
-@Entity
-@Table(name = "products")
-public class Product implements Serializable {
+//@Entity
+@Document
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
+//@Table(name = "products")
+public class Product {
 
     @Id
-    @Column(name = "uuid")
     private String uuid;
 
-    @Column(name = "name")
     private String name;
 
-    @Column(name = "description")
     private String description;
 
-    @Column(name = "provider")
     private String provider;
 
-    @Column(name = "available")
-    private boolean available;
+    private String available;
 
-    @Column(name = "unit_of_measurement")
     private String unitOfMeasurement;
 
-    @Column(name = "created_at")
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreatedDate
     private Date createdAt = new Date();
 
-    @Column(name = "updated_at")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date updatedAt = null;
+    @LastModifiedDate
+    private Date updatedAt;
+
+    public Product(String uuid, Date updatedAt) {
+        this.uuid = uuid;
+        this.updatedAt = updatedAt;
+    }
+
+    public String getUuid() {
+        return uuid;
+    }
+
+    public void setUuid(String uuid) {
+        this.uuid = uuid;
+    }
 
     public String getName() {
         return name;
@@ -59,28 +73,20 @@ public class Product implements Serializable {
         this.provider = provider;
     }
 
-    public boolean isAvailable() {
+    public String getAvailable() {
         return available;
+    }
+
+    public void setAvailable(String available) {
+        this.available = available;
     }
 
     public String getUnitOfMeasurement() {
         return unitOfMeasurement;
     }
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
-
 
     public void setUnitOfMeasurement(String unitOfMeasurement) {
         this.unitOfMeasurement = unitOfMeasurement;
-    }
-
-    public String getUuid() {
-        return uuid;
-    }
-
-    public void setUuid(String uuid) {
-        this.uuid = uuid;
     }
 
     public Date getCreatedAt() {

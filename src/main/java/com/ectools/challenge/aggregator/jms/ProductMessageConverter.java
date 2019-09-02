@@ -34,7 +34,6 @@ public class ProductMessageConverter implements MessageConverter {
         String payLoad = null;
         try {
             payLoad = objectMapper.writeValueAsString(product);
-            log.info("Outbound json='{}'", payLoad);
         } catch (JsonProcessingException e) {
             log.error("Error converting from Product", e);
         }
